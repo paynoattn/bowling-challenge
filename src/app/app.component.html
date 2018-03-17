@@ -1,5 +1,8 @@
 <mat-toolbar color="primary">
   <span>Bowling App</span>
+  <span class="spacer"></span>
+  <mat-icon (click)="addPlayer()">add_circle</mat-icon>
+  <mat-icon (click)="clearAllPlayers()">delete</mat-icon>
 </mat-toolbar>
 
 <app-player-score></app-player-score>

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatToolbarModule } from '@angular/material';
-
+import { MatDialogModule, MatIconModule, MatToolbarModule } from '@angular/material';
+import { LocalForageModule } from 'ngx-localforage';
 
 import { AppComponent } from './app.component';
 import { PlayerModule } from './player/player.module';
@@ -14,7 +14,10 @@ import { PlayerModule } from './player/player.module';
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
+    LocalForageModule.forRoot(),
     PlayerModule,
+    MatDialogModule,
+    MatIconModule,
     MatToolbarModule
   ],
   providers: [],
