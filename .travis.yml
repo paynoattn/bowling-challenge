@@ -11,9 +11,9 @@ branches:
     - master
 
 before_script:
-  - npm install -g @angular/cli
+  - npm install @angular/cli angular-cli-ghpages
 
 script:
-  - ng build --prod --aot
   - ng test
-  
+  - ng build --prod
+  - ngh
