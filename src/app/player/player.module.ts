@@ -15,7 +15,8 @@ import { PlayerScoreComponent } from './player-score/player-score.component';
   ],
   exports: [
     PlayerAddComponent,
-    PlayerListComponent
+    PlayerListComponent,
+    PlayerScoreComponent
   ]
 })
 export class PlayerModule { }
