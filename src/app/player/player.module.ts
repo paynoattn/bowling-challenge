@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  MatIconModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatInputModule
+} from '@angular/material';
 
 import { PlayerAddComponent } from './player-add/player-add.component';
 import { PlayerListComponent } from './player-list/player-list.component';
@@ -10,7 +16,12 @@ import { PlayerService } from './player.service';
 @NgModule({
   imports: [
     CommonModule,
-    MatIconModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatIconModule,
+    MatInputModule
   ],
   providers: [
     PlayerService
