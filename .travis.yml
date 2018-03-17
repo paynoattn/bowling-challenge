@@ -11,9 +11,9 @@ branches:
     - master
 
 before_script:
-  - npm install @angular/cli angular-cli-ghpages
+  - npm install @angular/cli angular-cli-ghpages -g
 
 script:
   - ng test
   - ng build --prod
-  - ngh
+  - angular-cli-ghpages --repo=https://GH_TOKEN@github.com/paynoattn/your-repo.git --name="paynoattn" --email=hi@paynoattn.com
