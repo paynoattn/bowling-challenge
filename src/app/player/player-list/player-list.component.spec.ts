@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatTableModule } from '@angular/material';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PlayerService } from '../player.service';
@@ -12,6 +13,7 @@ describe('PlayerListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ PlayerListComponent ],
+      imports: [ MatTableModule ],
       providers: [
         { provide: PlayerService, useClass: PlayerServiceStub }
       ],

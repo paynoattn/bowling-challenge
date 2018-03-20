@@ -2,17 +2,19 @@ import { Injectable } from '@angular/core';
 import { LocalForageService } from 'ngx-localforage';
 import { Observable } from 'rxjs/Observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
+import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/toPromise';
 
 import { Player } from './player.model';
 
 @Injectable()
 export class PlayerService {
   private localForageKey = 'app-players';
-  private _players = new ReplaySubject<Player[]>();
+  private _players = new ReplaySubject<Player[]>(1);
   private _players$ = false;
 
   constructor(private localForage: LocalForageService) { }
@@ -31,21 +33,11 @@ export class PlayerService {
   }
 
   /**
-   * Helper method for creating player.
-   * @param {string} name
-   */
-  newPlayer(name: string): Player {
-    const ret = new Player();
-    ret.id = this.newPlayerGuid();
-    ret.name = name;
-    return ret;
-  }
-
-  /**
    * Add a new player to the store.
    * @param {Player} player the player to add
    */
-  addPlayer(player: Player): Observable<Player[]> {
+  addPlayer(firstName: string): Observable<Player[]> {
+    const player = this.newPlayer(firstName);
     return this._players.take(1)
       .map(players => { players.push(player); return players; })
       .do(players => this.updatePlayers(players));
@@ -86,8 +78,20 @@ export class PlayerService {
    * Update all the players in the store
    * @param {Player[]} players
    */
-  updatePlayers(players: Player[]): Observable<Player[]> {
-    return this.localForage.setItem(this.localForageKey, players);
+  updatePlayers(players: Player[]): void {
+    this.localForage.setItem(this.localForageKey, players)
+      .subscribe(updatePlayers => this._players.next(updatePlayers));
+  }
+
+  /**
+  * Helper method for creating player.
+  * @param {string} name
+  */
+  private newPlayer(name: string): Player {
+    const ret = new Player();
+    ret.id = this.newPlayerGuid();
+    ret.name = name;
+    return ret;
   }
 
   /**

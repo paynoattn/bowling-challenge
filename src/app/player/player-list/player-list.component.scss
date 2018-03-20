@@ -1,6 +1,27 @@
+:host {
+  padding: 2rem;
+  display: block;
+}
+
 .no-players-message {
   mat-icon {
      font-size: 3em;
   }
   text-align: center;
+}
+
+mat-table, .mat-elevation-z8 {
+  border-radius: 5px;
+}
+
+.name-column, .score-column {
+  flex: 0 0 10%;
+}
+
+.actions-column {
+  flex: 0 0 10%;
+
+  mat-icon {
+    cursor: pointer;
+  }
 }

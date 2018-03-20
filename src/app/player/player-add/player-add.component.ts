@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 
 import { PlayerService } from '../player.service';
@@ -21,9 +21,9 @@ export class PlayerAddComponent {
     this.dialog.close();
   }
 
-  save() {
-    const newPlayer = this.playerSvc.newPlayer(this.playerName);
-    this.playerSvc.addPlayer(newPlayer)
-      .subscribe(() => this.dialog.close());
+  public async save() {
+    this.playerSvc.addPlayer(this.playerName)
+      .subscribe(() => this.dialog.close())
+      .unsubscribe();
   }
 }

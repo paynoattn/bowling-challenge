@@ -5,7 +5,8 @@ import {
   MatIconModule,
   MatButtonModule,
   MatButtonToggleModule,
-  MatInputModule
+  MatInputModule,
+  MatTableModule
 } from '@angular/material';
 
 import { PlayerAddComponent } from './player-add/player-add.component';
@@ -21,7 +22,8 @@ import { PlayerService } from './player.service';
     MatButtonModule,
     MatButtonToggleModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
   ],
   providers: [
     PlayerService
