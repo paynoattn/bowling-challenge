@@ -1,9 +1,11 @@
 import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/toPromise';
 
 import { Player } from '../player.model';
 import { PlayerService } from '../player.service';
+import { PlayerScoreService } from '../player-score/player-score.service';
 
 @Component({
   selector: 'app-player-list',
@@ -17,10 +19,18 @@ export class PlayerListComponent implements OnInit, OnDestroy {
   public bowlingPlayer: Player;
   public displayedColumns = [ 'name', 'rounds', 'score', 'actions' ];
 
-  constructor(private playerSvc: PlayerService) { }
+  constructor(
+    private playerSvc: PlayerService,
+    private playerScoreSvc: PlayerScoreService
+  ) { }
+
+  public async handleScoreSave(player: Player) {
+    await this.playerSvc.updatePlayer(player).toPromise();
+    this.bowlingPlayer = undefined;
+  }
 
   public getPlayerScore(player: Player) {
-    return player && player.scores ? player.scores : 0;
+    return player && player.scores ? this.playerScoreSvc.calculateScores(player.scores) : 0;
   }
 
   public setPlayerBowling(player: Player) {
@@ -31,7 +41,7 @@ export class PlayerListComponent implements OnInit, OnDestroy {
     await this.playerSvc.removePlayer(player.id).toPromise();
   }
 
-  public ngOnInit() {
+  ngOnInit() {
     this.players$ = this.playerSvc.players
       .subscribe(players => {
         this.playersLength = players.length;
@@ -39,7 +49,7 @@ export class PlayerListComponent implements OnInit, OnDestroy {
       });
   }
 
-  public ngOnDestroy() {
+  ngOnDestroy() {
     this.players$.unsubscribe();
   }
 }

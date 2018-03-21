@@ -5,6 +5,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PlayerService } from '../player.service';
 import { PlayerServiceStub } from '../player.service.stub';
 import { PlayerListComponent } from './player-list.component';
+import { PlayerScoreService } from '../player-score/player-score.service';
+import { PlayerScoreServiceStub } from '../player-score/player-score.service.stub';
 
 describe('PlayerListComponent', () => {
   let component: PlayerListComponent;
@@ -15,7 +17,8 @@ describe('PlayerListComponent', () => {
       declarations: [ PlayerListComponent ],
       imports: [ MatTableModule ],
       providers: [
-        { provide: PlayerService, useClass: PlayerServiceStub }
+        { provide: PlayerService, useClass: PlayerServiceStub },
+        { provide: PlayerScoreService, useClass: PlayerScoreServiceStub }
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })

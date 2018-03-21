@@ -12,6 +12,7 @@ import {
 import { PlayerAddComponent } from './player-add/player-add.component';
 import { PlayerListComponent } from './player-list/player-list.component';
 import { PlayerScoreComponent } from './player-score/player-score.component';
+import { PlayerScoreService } from './player-score/player-score.service';
 import { PlayerService } from './player.service';
 
 @NgModule({
@@ -26,7 +27,8 @@ import { PlayerService } from './player.service';
     MatTableModule
   ],
   providers: [
-    PlayerService
+    PlayerService,
+    PlayerScoreService
   ],
   declarations: [
     PlayerAddComponent,

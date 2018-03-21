@@ -1,9 +1,10 @@
 export class PlayerScore {
-  public score: number;
-  public index: number;
+  pinsHit: number[];
+  index: number;
+  strike: boolean;
+  spare: boolean;
 
-  constructor(score: number, index: number) {
-    this.score = score;
-    this.index = index;
-   }
+  constructor() {
+    this.pinsHit = [];
+  }
 }

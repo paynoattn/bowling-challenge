@@ -1,32 +1,37 @@
-<div class="players" *ngIf="playersLength && playersLength">
-  <div class="mat-elevation-z8">
-    <mat-table #table [dataSource]="players">
-      <ng-container matColumnDef="name">
-        <mat-header-cell class="name-column" *matHeaderCellDef> Name </mat-header-cell>
-        <mat-cell class="name-column" *matCellDef="let player"> {{player.name}} </mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="rounds">
-        <mat-header-cell *matHeaderCellDef> Rounds </mat-header-cell>
-        <mat-cell *matCellDef="let player"> </mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="score">
-        <mat-header-cell class="score-column" *matHeaderCellDef> Score </mat-header-cell>
-        <mat-cell class="score-column" *matCellDef="let player"> {{ getPlayerScore(player) }} </mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="actions">
-        <mat-header-cell class="actions-column" *matHeaderCellDef> Actions </mat-header-cell>
-        <mat-cell class="actions-column" *matCellDef="let player">
-          <mat-icon *ngIf="!bowlingPlayer" title="Bowl" (click)="setPlayerBowling(player)">play_for_work</mat-icon>
-          <mat-icon title="Delete player" (click)="deletePlayer(player)">delete</mat-icon>
-        </mat-cell>
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-  </div>
-</div>
-<h2 class="no-players-message" *ngIf="!playersLength || !playersLength">
+<div class="wrapper">
+  <app-player-score [bowlingPlayer]="bowlingPlayer" (saveScoreOutput)="handleScoreSave($event)">
+  </app-player-score>
+</div><!-- .wrapper -->
+<div class="wrapper">
+  <div class="players" *ngIf="playersLength && playersLength">
+    <div class="mat-elevation-z8">
+      <mat-table #table [dataSource]="players">
+        <ng-container matColumnDef="name">
+          <mat-header-cell class="name-column" *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell class="name-column" *matCellDef="let player"> {{player.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="rounds">
+          <mat-header-cell *matHeaderCellDef> Rounds </mat-header-cell>
+          <mat-cell *matCellDef="let player"> {{ player.scores | json }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="score">
+          <mat-header-cell class="score-column" *matHeaderCellDef> Score </mat-header-cell>
+          <mat-cell class="score-column" *matCellDef="let player"> {{ getPlayerScore(player) }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <mat-header-cell class="actions-column" *matHeaderCellDef> Actions </mat-header-cell>
+          <mat-cell class="actions-column" *matCellDef="let player">
+            <mat-icon *ngIf="!bowlingPlayer" title="Bowl" (click)="setPlayerBowling(player)">play_for_work</mat-icon>
+            <mat-icon title="Delete player" (click)="deletePlayer(player)">delete</mat-icon>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </div><!-- .players -->
+</div><!-- .wrapper -->
+<h2 class="no-players-message wrapper" *ngIf="!playersLength || !playersLength">
   <mat-icon>warning</mat-icon>
   <br /> You do not seem to have any players added.
   <br /> Click the plus button above to add one.

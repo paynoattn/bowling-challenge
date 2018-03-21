@@ -1,3 +1,28 @@
-<p>
-  player-score works!
-</p>
+<h2 class="no-bowling-player" *ngIf="!bowlingPlayer">
+  No player is currently bowling. Use the bowling icon next to a player to set them to bowling.
+  <br /><mat-icon>play_for_work</mat-icon>
+</h2>
+<form class="score-form" #scoreForm="ngForm" *ngIf="bowlingPlayer">
+  <h2 class="form-title">Enter the player's score</h2>
+  <p class="instructions">
+    Instructions: If your score is a strike, hit the strike button. Otherwise enter the number of pins you hit down, and hit the 'enter' key. 
+    Each player gets 2 rounds per frame, except the last frame.
+  </p>
+  <div class="row">
+    <div class="col" *ngIf="!score?.strike">
+      <input id="pins" max="10" min="1" type="number" (keyup.enter)="enterPins($event)" />
+      <label for="pins">Pins</label>
+    </div><!-- .col -->
+    <div class="col" *ngIf="score?.pinsHit?.length && !score?.strike">
+      <button type="button" class="score-button" id="spare" (click)="enterSpare()"> / </button>
+      <label for="spare"> Spare </label>
+    </div><!-- .col -->
+    <div class="col" *ngIf="!score?.pinsHit?.length">
+      <button type="button" class="score-button" id="strike" (click)="enterStrike()">X</button>
+      <label for="strink">Strike</label>
+    </div><!-- .col -->
+  </div><!-- .row -->
+  <div class="row" *ngIf="readyForSave">
+    <button type="button" mat-raised-button color="primary" (click)="saveScore()">Save Score</button>
+  </div><!-- .row -->
+</form>
