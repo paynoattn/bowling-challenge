@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" *ngIf="playersLength">
   <app-player-score [bowlingPlayer]="bowlingPlayer" (saveScoreOutput)="handleScoreSave($event)">
   </app-player-score>
 </div><!-- .wrapper -->
