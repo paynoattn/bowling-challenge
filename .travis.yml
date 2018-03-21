@@ -15,5 +15,6 @@ before_script:
 
 script:
   - ng test --watch false
+  - ng lint
   - ng build --prod
   - angular-cli-ghpages --repo=https://GH_TOKEN@github.com/paynoattn/bowling-challenge.git --name="paynoattn" --email=hi@paynoattn.com
