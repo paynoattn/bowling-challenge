@@ -16,4 +16,4 @@ before_script:
 script:
   - ng test --watch false
   - ng build --prod
-  - angular-cli-ghpages --repo=https://GH_TOKEN@github.com/paynoattn/your-repo.git --name="paynoattn" --email=hi@paynoattn.com
+  - angular-cli-ghpages --repo=https://GH_TOKEN@github.com/paynoattn/bowling-challenge.git --name="paynoattn" --email=hi@paynoattn.com
