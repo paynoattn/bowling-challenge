@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  flex-direction: row;
+}
+
+.score {
+  margin: auto;
+  width: calc(100% / 10);
+  text-align: center;
+}
+
+.frame-score {
+  font-size: 1.5em;
+}

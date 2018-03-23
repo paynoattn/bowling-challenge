@@ -12,7 +12,7 @@
         </ng-container>
         <ng-container matColumnDef="rounds">
           <mat-header-cell *matHeaderCellDef> Rounds </mat-header-cell>
-          <mat-cell *matCellDef="let player"> {{ player.scores | json }} </mat-cell>
+          <mat-cell *matCellDef="let player"> <app-player-score [scores]="player.scores"></app-player-score> </mat-cell>
         </ng-container>
         <ng-container matColumnDef="score">
           <mat-header-cell class="score-column" *matHeaderCellDef> Score </mat-header-cell>

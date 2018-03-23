@@ -1,1 +1,8 @@
-it works
+<div class="score" *ngFor="let score of scores">
+  <span class="pins-hit" *ngFor="let pin of score.pinsHit; let i = index">
+    {{ pin }}
+    {{ i < score.pinsHit.length - 1 ? ',' : '' }}
+  </span>
+  <br/>
+  <span class="frame-score">0</span>
+</div>

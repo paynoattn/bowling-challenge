@@ -17,6 +17,15 @@ mat-table, .mat-elevation-z8 {
   border-radius: 5px;
 }
 
+mat-header-cell {
+  text-align: center;
+}
+
+mat-cell.score-column {
+  text-align: center;
+  font-size: 1.75rem;
+}
+
 .name-column, .score-column {
   flex: 0 0 10%;
 }
