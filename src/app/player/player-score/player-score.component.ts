@@ -26,7 +26,6 @@ export class PlayerScoreComponent implements OnChanges {
     } else if (this.bowlingPlayer && this.bowlingPlayer.scores && this.bowlingPlayer.scores.length) {
       this.score.index = this.bowlingPlayer.scores.length;
     }
-    console.log('changes detected', this.bowlingPlayer, this.score);
   }
 
   public isFinalFrame() {
@@ -42,7 +41,6 @@ export class PlayerScoreComponent implements OnChanges {
     ) {
       this.readyForSave = true;
     }
-    console.log('strike', this.score);
   }
 
   public enterSpare() {
@@ -54,7 +52,6 @@ export class PlayerScoreComponent implements OnChanges {
     ) {
       this.readyForSave = true;
     }
-    console.log('spare', this.score);
   }
 
   public enterPins($event) {
@@ -66,13 +63,11 @@ export class PlayerScoreComponent implements OnChanges {
     ) {
       this.readyForSave = true;
     }
-    console.log('pins entered', this.score);
   }
 
   public saveScore() {
     const emittedPlayer = this.bowlingPlayer;
     emittedPlayer.scores.push(this.score);
-    console.log('saving score', emittedPlayer);
     this.saveScoreOutput.emit(emittedPlayer);
   }
 }
