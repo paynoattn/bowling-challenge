@@ -9,7 +9,7 @@
     Each player gets 2 rounds per frame, except the last frame.
   </p>
   <div class="row">
-    <div class="col" *ngIf="!score?.strike">
+    <div class="col" *ngIf="isFinalFrame() || !score?.strike">
       <input id="pins" max="10" min="1" type="number" (keyup.enter)="enterPins($event)" />
       <label for="pins">Pins</label>
     </div><!-- .col -->
@@ -17,7 +17,7 @@
       <button type="button" class="score-button" id="spare" (click)="enterSpare()"> / </button>
       <label for="spare"> Spare </label>
     </div><!-- .col -->
-    <div class="col" *ngIf="!score?.pinsHit?.length">
+    <div class="col" *ngIf="isFinalFrame() || !score?.pinsHit?.length">
       <button type="button" class="score-button" id="strike" (click)="enterStrike()">X</button>
       <label for="strink">Strike</label>
     </div><!-- .col -->

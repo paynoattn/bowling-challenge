@@ -29,11 +29,15 @@ export class PlayerScoreComponent implements OnChanges {
     console.log('changes detected', this.bowlingPlayer, this.score);
   }
 
+  public isFinalFrame() {
+    return (this.score && this.score.index === 9 && this.score.pinsHit.length < 3) ? true : false;
+  }
+
   public enterStrike() {
-    this.score.pinsHit = [10];
+    this.score.pinsHit.push(10);
     this.score.strike = true;
     if (
-      this.score.index <= 10 ||
+      this.score.index < 9 ||
       this.score.pinsHit.length >= 2
     ) {
       this.readyForSave = true;
@@ -45,7 +49,7 @@ export class PlayerScoreComponent implements OnChanges {
     this.score.pinsHit.push(10 - this.score.pinsHit[0]);
     this.score.spare = true;
     if (
-      this.score.index <= 10 ||
+      this.score.index < 9 ||
       this.score.pinsHit.length >= 2
     ) {
       this.readyForSave = true;
@@ -57,7 +61,7 @@ export class PlayerScoreComponent implements OnChanges {
     const pins = parseInt($event.target.value, 10);
     this.score.pinsHit.push(pins);
     if (
-      this.score.pinsHit.length > 1 && this.score.index <= 10 ||
+      this.score.pinsHit.length > 1 && this.score.index < 9 ||
       this.score.pinsHit.length >= 3
     ) {
       this.readyForSave = true;
