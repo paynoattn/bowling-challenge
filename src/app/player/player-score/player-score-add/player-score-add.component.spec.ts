@@ -1,22 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
-import { PlayerScoreComponent } from './player-score.component';
+import { PlayerScoreAddComponent } from './player-score-add.component';
 
-describe('PlayerScoreComponent', () => {
-  let component: PlayerScoreComponent;
-  let fixture: ComponentFixture<PlayerScoreComponent>;
+describe('PlayerScoreAddComponent', () => {
+  let component: PlayerScoreAddComponent;
+  let fixture: ComponentFixture<PlayerScoreAddComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlayerScoreComponent ],
+      declarations: [PlayerScoreAddComponent],
+      imports: [ FormsModule ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PlayerScoreComponent);
+    fixture = TestBed.createComponent(PlayerScoreAddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

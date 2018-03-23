@@ -14,6 +14,7 @@ import { PlayerListComponent } from './player-list/player-list.component';
 import { PlayerScoreComponent } from './player-score/player-score.component';
 import { PlayerScoreService } from './player-score/player-score.service';
 import { PlayerService } from './player.service';
+import { PlayerScoreAddComponent } from './player-score/player-score-add/player-score-add.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { PlayerService } from './player.service';
   declarations: [
     PlayerAddComponent,
     PlayerListComponent,
-    PlayerScoreComponent
+    PlayerScoreComponent,
+    PlayerScoreAddComponent
   ],
   exports: [
     PlayerAddComponent,
