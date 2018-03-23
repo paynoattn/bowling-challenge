@@ -17,7 +17,7 @@ export class AppComponent {
   ) { }
 
   addPlayer() {
-    this.dialog.open(PlayerAddComponent);
+    this.dialog.open(PlayerAddComponent, { minWidth: '30vw', maxWidth: '90vw' });
   }
 
   async clearAllPlayers() {

@@ -13,7 +13,7 @@
       <input id="pins" max="10" min="1" type="number" (keyup.enter)="enterPins($event)" />
       <label for="pins">Pins</label>
     </div><!-- .col -->
-    <div class="col" *ngIf="isFinalFrame() || score?.pinsHit?.length > 0 && score?.pinsHit?.length < 3 && !score?.strike">
+    <div class="col" *ngIf="isFinalFrame() && score?.pinsHit?.length > 0 || score?.pinsHit?.length > 0 && !score?.strike">
       <button type="button" class="score-button" id="spare" (click)="enterSpare()"> / </button>
       <label for="spare"> Spare </label>
     </div><!-- .col -->

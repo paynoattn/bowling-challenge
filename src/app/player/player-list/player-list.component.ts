@@ -30,7 +30,7 @@ export class PlayerListComponent implements OnInit, OnDestroy {
   }
 
   public getPlayerScore(player: Player) {
-    return player && player.scores ? this.playerScoreSvc.calculateScores(player.scores) : 0;
+    return player && player.scores ? this.playerScoreSvc.calculateTotalScores(player.scores) : 0;
   }
 
   public setPlayerBowling(player: Player) {

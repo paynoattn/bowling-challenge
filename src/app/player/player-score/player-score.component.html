@@ -1,8 +1,10 @@
-<div class="score" *ngFor="let score of scores">
-  <span class="pins-hit" *ngFor="let pin of score.pinsHit; let i = index">
+<div class="score" *ngFor="let score of scores; let i = index">
+  <span class="pins-hit" *ngFor="let pin of score.pinsHit; let ii = index">
     {{ pin }}
-    {{ i < score.pinsHit.length - 1 ? ',' : '' }}
+    {{ ii < score.pinsHit.length - 1 ? ',' : '' }}
   </span>
   <br/>
-  <span class="frame-score">0</span>
+  <span class="frame-score">
+    {{ scores ? this.scoreSvc.calculateFrameScores(this.scores)[i] : '' }}
+  </span>
 </div>

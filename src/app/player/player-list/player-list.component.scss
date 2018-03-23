@@ -31,7 +31,8 @@ mat-cell.score-column {
 }
 
 .actions-column {
-  flex: 0 0 10%;
+  text-align: end;
+  flex: 0 0 5%;
 
   mat-icon {
     cursor: pointer;
