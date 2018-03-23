@@ -38,7 +38,7 @@ export class PlayerScoreComponent implements OnChanges {
     this.score.strike = true;
     if (
       this.score.index < 9 ||
-      this.score.pinsHit.length >= 2
+      this.score.pinsHit.length > 2
     ) {
       this.readyForSave = true;
     }
@@ -50,7 +50,7 @@ export class PlayerScoreComponent implements OnChanges {
     this.score.spare = true;
     if (
       this.score.index < 9 ||
-      this.score.pinsHit.length >= 2
+      this.score.pinsHit.length > 2
     ) {
       this.readyForSave = true;
     }
@@ -62,7 +62,7 @@ export class PlayerScoreComponent implements OnChanges {
     this.score.pinsHit.push(pins);
     if (
       this.score.pinsHit.length > 1 && this.score.index < 9 ||
-      this.score.pinsHit.length >= 3
+      this.score.pinsHit.length > 2
     ) {
       this.readyForSave = true;
     }

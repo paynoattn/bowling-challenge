@@ -21,7 +21,7 @@
         <ng-container matColumnDef="actions">
           <mat-header-cell class="actions-column" *matHeaderCellDef> Actions </mat-header-cell>
           <mat-cell class="actions-column" *matCellDef="let player">
-            <mat-icon *ngIf="!bowlingPlayer" title="Bowl" (click)="setPlayerBowling(player)">play_for_work</mat-icon>
+            <mat-icon *ngIf="!bowlingPlayer && player.scores.length < 10" title="Bowl" (click)="setPlayerBowling(player)">play_for_work</mat-icon>
             <mat-icon title="Delete player" (click)="deletePlayer(player)">delete</mat-icon>
           </mat-cell>
         </ng-container>
